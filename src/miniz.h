@@ -2149,7 +2149,7 @@ int mz_compress2(unsigned char *pDest, mz_ulong *pDest_len,
 #if defined(__MINGW32__) || defined(__MINGW64__) || defined(__WATCOMC__)
   /* In case mz_ulong is 64-bits (argh I hate longs). */
 #else
-  if ((mz_uint64)(source_len | *pDest_len) > 0xFFFFFFFFU)
+  if ((mz_uint64)(source_len | *pDest_len) > (mz_uint64)0xFFFFFFFFU)
     return MZ_PARAM_ERROR;
 #endif
   stream.next_in = pSource;
@@ -2400,7 +2400,7 @@ int mz_uncompress2(unsigned char *pDest, mz_ulong *pDest_len,
 #if defined(__MINGW32__) || defined(__MINGW64__) || defined(__WATCOMC__)
   /* In case mz_ulong is 64-bits (argh I hate longs). */
 #else
-  if ((mz_uint64)(*pSource_len | *pDest_len) > 0xFFFFFFFFU)
+  if ((mz_uint64)(*pSource_len | *pDest_len) > (mz_uint64)0xFFFFFFFFU)
     return MZ_PARAM_ERROR;
 #endif
   stream.next_in = pSource;
